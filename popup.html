@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body data-mode="focus">
+  <nav class="modes" aria-label="Timer mode">
+    <button data-mode="focus">Focus</button>
+    <button data-mode="short">Short break</button>
+    <button data-mode="long">Long break</button>
+  </nav>
+
+  <section class="clock">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <circle class="track" cx="100" cy="100" r="88"/>
+      <circle class="arc" id="arc" cx="100" cy="100" r="88"/>
+    </svg>
+    <div class="readout">
+      <div id="time" aria-live="off">25:00</div>
+      <div id="status">Ready to focus</div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <button id="toggle" class="primary">Start</button>
+    <button id="reset">Reset</button>
+    <button id="skip">Skip</button>
+  </div>
+
+  <section class="stats">
+    <div><strong id="today">0m</strong><span>studied today</span></div>
+    <div><strong id="sessions">0</strong><span>sessions today</span></div>
+    <div><strong id="week">0m</strong><span>last 7 days</span></div>
+  </section>
+
+  <section class="chart" id="chart" aria-label="Study time, last 7 days"></section>
+
+  <details>
+    <summary>Settings</summary>
+    <div class="settings">
+      <label>Focus (min) <input type="number" id="s-focus" min="1" max="180"></label>
+      <label>Short break <input type="number" id="s-short" min="1" max="60"></label>
+      <label>Long break <input type="number" id="s-long" min="1" max="90"></label>
+      <label>Long break every <input type="number" id="s-longEvery" min="2" max="10"></label>
+      <label class="check"><input type="checkbox" id="s-auto"> Start next timer automatically</label>
+      <button id="clear" class="link">Clear study history</button>
+    </div>
+  </details>
+  <script src="popup.js"></script>
+</body>
+</html>
